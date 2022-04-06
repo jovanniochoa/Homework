@@ -46,7 +46,7 @@ void bubbleSort(){
     //bubbleDown: [0...0]
 }
 
-int bubbleSortMe(){
+int UsingStruct(){
     
     // read group.txt and load up arrays
     ifstream finput ("group.txt");
