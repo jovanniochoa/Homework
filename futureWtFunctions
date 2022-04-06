@@ -1,0 +1,81 @@
+/*
+This program calculates the present value of money given the future value, interest rate, and number of years using 4 functions total.
+*/
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <sstream>
+#include <cmath>
+
+using namespace std;
+
+//gets the future value and displays error if less than 0 or equal to 0.
+double futureValue()
+{
+double futureValue = 0;
+cout << "Enter future value" << endl;
+cin >> futureValue;
+while (futureValue <= 0)
+    {
+    cout << "The future value must be greater than zero" << endl;
+    cout << "Enter future value" << endl;
+    cin >> futureValue;
+    }
+return futureValue;
+}
+//gets the input interest rate and displays error if less than or equal to 0. If interest is higher than 1, it converts it into a percentage via decimals.
+double interestRate()
+{
+double interestRate = 0;
+cout << "Enter annual interest rate" << endl;
+cin >> interestRate;
+while (interestRate <= 0)
+    {
+    cout << "The annual interest rate must be greater than zero" << endl;
+    cout << "Enter annual interest rate" << endl;
+    cin >> interestRate;
+    }
+if (interestRate > 1)
+  {
+  interestRate = interestRate/100;
+  }
+return interestRate;
+}
+
+//gets the number of years and displays error if less than 0 or equal to 0
+double numberYears()
+{
+double numberYears = 0;
+cout << "Enter number of years" << endl;
+cin >> numberYears;
+while (numberYears <= 0)
+    {
+    cout << "The number of years must be greater than zero" << endl;
+    cout << "Enter number of years" << endl;
+    cin >> numberYears;
+    }
+return numberYears;
+}
+
+// Calculates the present value
+double presentValue(double futureValue, double interestRate, int numberYears)
+{
+double presentValue = 0;
+presentValue = (futureValue /  pow(1+interestRate ,numberYears));
+return presentValue;
+}
+
+//calls and displays the functions to calculate the present value.
+int futureWtFunctions(){
+double future = futureValue();
+double interest = interestRate();
+double number = numberYears();
+double present = presentValue(future, interest, number);
+cout << "Present value: $" << fixed << setprecision(2) << present << endl;
+cout << "Future value: $" << future << endl;
+cout << "Annual interest rate: " << fixed << setprecision(3) << interest * 100 << "%" << endl;
+cout << "Years: " << fixed << setprecision(0) << number << endl;
+}
+
+
+
