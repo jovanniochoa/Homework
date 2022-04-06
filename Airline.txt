@@ -1,0 +1,77 @@
+void printTicket(){ // prints the ticket and say's the goodbye
+    //prints ticket... ("ofstream printer(ticket_Information);") 
+   print "Pick up the boarding pass below."
+   print  "Thanks for choosing us. Have a great flight!"
+}
+void passengerQuestions(){
+    if(numPassengers > 4){
+        print "Please see agent to check-in your group. Thank you!"
+        }
+    else{
+        if (quality == 1){
+            print "Are you interested in upgrading to first class for $" << upgradeCost << " each?"
+            read upgradeAnswer;
+            if(upgradeAnswer is yes){
+                print "Slide credit card to pay for the upgrade."
+                if (authorize(credit_card, total_amount)){
+                    upgradeclass(trip_today)
+                    printTicket();
+                }
+                else{
+                    print "Credit card was declined. See agent for assistance"
+                }
+            }
+            else{
+                printTicket();
+            }
+        }
+        else{
+            printTicket();
+        }
+    }
+}
+
+int main(){ //processes airline... I assume the keypad input has numbers AND letter
+    while(true){
+        print "Welcome to Alice Airlines. Please choose an option to check-in";
+        print "Confirmation number, Frequent flyer number, credit card"
+        print "If you do not have any of these, please see agent."
+        read choice
+        if (choice == 1){
+            print "enter 6-digit confirmation number: "
+            read confNumber
+            isconfNumberValid(confNumber); // a boolean
+            while (isconfNumberValid(confNumber) == false){
+                print "Invalid confirmation number. Please re-enter: "
+                read confNumber
+                isconfNumberValid(confNumber);
+            }
+            passengerQuestions();
+        }
+        if (choice == "2" ){
+            print "enter your frequent flyer number: "
+            read flyerNumber
+            while (isflyerNumberValid(flyerNumber) == false){
+                print "Invalid frequent flyer number. Please re-enter: "
+                read flyerNumber
+                isflyerNumberValid(flyerNumber); // a boolean
+            }
+            passengerQuestions();
+        }
+        if (choice == "3" ){
+ //user selects the credit..
+            print "Please swipe the credit card." // waits for credit card swipe 
+            read name
+            print "Enter the destination city for your trip today: "
+            read destination
+            if (validate_confirmation_number){
+                passengerQuestions();
+            }
+            else{
+                print "sorry, I could not pull up your reservation. Please see agent."
+            }
+        }
+    }
+}
+
+
